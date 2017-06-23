@@ -10,14 +10,19 @@ let userInput = "";
 // console.log(artistSearch)
 
 // 2. Create your `onSubmit` event for getting the user's search term
-submitButton.addEventListener("click", getResults);
-// console.log("button clicked");
+// submitButton.addEventListener("click", getResults);
+submitButton.onclick=getResults;
+// console.log(submitButton);
 
 function getResults() {
   let userInput = searchArea.value;
-  // console.log(userInput);
+  // console.log(submitButton);
+  console.log(userInput);
+  // console.log(getResults);
+  // console.log(searchArea);
+  // console.log(data);
 
-   fetch("https://api.soundcloud.com/tracks?client_id=6d394f941827974ca06f3760a0741529" + userInput)
+   fetch("https://api.soundcloud.com/tracks?client_id=6d394f941827974ca06f3760a0741529&q=" + userInput)
    .then(
       function(response) {
         if (response.status !== 200) {
@@ -25,12 +30,14 @@ function getResults() {
           return;
         } else {
         response.json().then(function(data){
-           results.innerHTML = "";
+           getResults.innerHTML = "";
            for (let i = 0; i < data.length; i++) {
              let artwork = data[i].artwork_url;
              let title = data[i].title
              let music = data[i].stream_url;
-            //  console.log(data);
+             console.log(artwork);
+             console.log(title);
+             console.log(music);
 
       let markup = `
         <div class ="displayResults">
@@ -39,7 +46,7 @@ function getResults() {
           </div>`
 
 
-          results.innerHTML += markup;
+          getResults.innerHTML += markup;
         }
       })
         }

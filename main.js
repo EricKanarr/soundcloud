@@ -10,19 +10,19 @@ let userInput = "";
 // console.log(artistSearch)
 
 // 2. Create your `onSubmit` event for getting the user's search term
-// submitButton.addEventListener("click", getResults);
+submitButton.addEventListener("click", getResults);
 submitButton.onclick=getResults;
-// console.log(submitButton);
+console.log(submitButton);
 
 function getResults() {
   let userInput = searchArea.value;
   // console.log(submitButton);
-  console.log(userInput);
+  console.log("this is user input" + userInput);
   // console.log(getResults);
   // console.log(searchArea);
   // console.log(data);
 
-   fetch("https://api.soundcloud.com/tracks?client_id=6d394f941827974ca06f3760a0741529&q=" + userInput)
+   fetch("https://api.soundcloud.com/tracks/?client_id=6d394f941827974ca06f3760a0741529&q=" + userInput)
    .then(
       function(response) {
         if (response.status !== 200) {
@@ -30,23 +30,36 @@ function getResults() {
           return;
         } else {
         response.json().then(function(data){
+          var songs = data;
           //  getResults.innerHTML = "";
           //  for (let i = 0; i < data.length; i++) {
-
-             let artwork = data.artwork_url;
-             let title = data.title
-             let music = data.stream_url;
-             console.log(artwork);
-             console.log(title);
-             console.log(music);
-
-      let markup = `
-        <div class="artwork">
-        <p>Song: ${title}</p>
-        <p>`
+            console.log(data);
+            //  let artwork = data.artwork_url;
+            //  let title = data.title
+            //  let music = data.stream_url;
+            //  console.log(artwork);
+            //  console.log(title);
+            //  console.log(music);
 
 
-          getResults.innerHTML += markup;
+function markedUp() {
+  var creatingPage = `
+  <div class = "trackContainer">
+  ${songs.map(song=>`
+    <button class = "trackButton">
+      <img src = "${song.artwork_url}" id="${song.stream_url}/?client_id=6d394f941827974ca06f3760a0741529">
+    </button>
+    <ul>
+      <li class="title">${song.title}</li>
+      <li class="music">${song.stream_url}</li>
+    </ul>
+    `).join("")}
+   </div>`;
+   return creatingPage;
+}
+  markup = markedUp();
+  console.log(markup);
+    document.getElementById('results').innerHTML = markup;
         })
       }
     })

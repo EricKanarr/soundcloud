@@ -30,8 +30,9 @@ function getResults() {
           return;
         } else {
         response.json().then(function(data){
-           getResults.innerHTML = "";
-           for (let i = 0; i < data.length; i++) {
+          //  getResults.innerHTML = "";
+          //  for (let i = 0; i < data.length; i++) {
+
              let artwork = data[i].artwork_url;
              let title = data[i].title
              let music = data[i].stream_url;
@@ -40,10 +41,9 @@ function getResults() {
              console.log(music);
 
       let markup = `
-        <div class ="displayResults">
-          <div class ="backgroundArt">
-
-          </div>`
+        <div class="artwork">
+        <p>Song: ${title}</p>
+        <p>
 
 
           getResults.innerHTML += markup;

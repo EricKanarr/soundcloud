@@ -33,9 +33,9 @@ function getResults() {
           //  getResults.innerHTML = "";
           //  for (let i = 0; i < data.length; i++) {
 
-             let artwork = data[i].artwork_url;
-             let title = data[i].title
-             let music = data[i].stream_url;
+             let artwork = data.artwork_url;
+             let title = data.title
+             let music = data.stream_url;
              console.log(artwork);
              console.log(title);
              console.log(music);
@@ -43,16 +43,16 @@ function getResults() {
       let markup = `
         <div class="artwork">
         <p>Song: ${title}</p>
-        <p>
+        <p>`
 
 
           getResults.innerHTML += markup;
-        }
-      })
-        }
+        })
       }
-    )
-  };
+    })
+      }
+
+
 
 
 // 4. Create a way to append the fetch results to your page

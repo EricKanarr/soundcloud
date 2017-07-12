@@ -1,0 +1,19 @@
+{
+  "name": "soundcloud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricKanarr/soundcloud.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EricKanarr/soundcloud/issues"
+  },
+  "homepage": "https://github.com/EricKanarr/soundcloud#readme"
+}
